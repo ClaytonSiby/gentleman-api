@@ -5,6 +5,6 @@ FactoryBot.define do
         color { 'black' }
         price { 123.45 }
         description { Faker::Lorem.paragraph }
-        imageUrl { 'https://service.unsplash/?suit,black' }
+        imageUrl { 'https://service.unsplash.com/?suit,black' }
     end
 end
