@@ -6,7 +6,7 @@ RSpec.describe "Suits", type: :request do
     let(:suit_id) { suits.first.id }
 
     describe 'GET /api/v1/suits' do
-      before { get '/api/v1/suits' }
+      before { get '/suits' }
 
       it 'returns suits' do
         expect(json).not_to be_empty
@@ -19,7 +19,7 @@ RSpec.describe "Suits", type: :request do
     end
 
     describe 'GET /api/v1/suits/:id' do
-      before { get "/api/v1/suits/#{suit_id}"}
+      before { get "/suits/#{suit_id}"}
 
       context 'when the record exists' do
         it 'returns the suit' do
@@ -56,7 +56,7 @@ RSpec.describe "Suits", type: :request do
 
 
       context 'when the request is valid' do
-        before { post '/api/v1/suits', params: valid_attributes }
+        before { post '/suits', params: valid_attributes }
 
         it 'creates a new suit' do
           expect(json['name']).to eq('Taxido')
@@ -68,7 +68,7 @@ RSpec.describe "Suits", type: :request do
       end
 
       context 'when the request is invalid' do
-        before { post '/api/v1/suits ', params: { name: 'Taxido' } }
+        before { post '/suits ', params: { name: 'Taxido' } }
 
         it 'returns status code 422' do
           expect(response).to have_http_status(422)
@@ -80,7 +80,7 @@ RSpec.describe "Suits", type: :request do
       let(:valid_attributes) { { name: 'Peak Lapel' } }
 
       context 'when the record exists' do
-        before { put "/api/v1/suits/#{suit_id}", params: valid_attributes }
+        before { put "/suits/#{suit_id}", params: valid_attributes }
 
         it 'updates the record' do
           expect(response.body).to be_empty
@@ -93,7 +93,7 @@ RSpec.describe "Suits", type: :request do
     end
 
     describe 'DLETE /api/v1/suits/:id' do
-      before { delete "/api/v1/suits/#{suit_id}" }
+      before { delete "/suits/#{suit_id}" }
 
       it 'returns status code 204' do
         expect(response).to have_http_status(204)
