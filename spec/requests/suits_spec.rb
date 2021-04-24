@@ -47,7 +47,7 @@ RSpec.describe "Suits", type: :request do
 
     describe 'POST /api/v1/suits' do
       let(:valid_attributes) { { name: 'Taxido',
-                                 type: 'Slim Fit',
+                                 suit_type: 'Slim Fit',
                                  color: 'black',
                                  price: 123.45,
                                  description: Faker::Lorem.paragraph,
@@ -62,13 +62,13 @@ RSpec.describe "Suits", type: :request do
           expect(json['name']).to eq('Taxido')
         end
 
-        it 'returns status code 422' do
-          expect(response).to have_http_status(201)
+        it 'returns status code 200' do
+          expect(response).to have_http_status(200)
         end
       end
 
       context 'when the request is invalid' do
-        before { post '/suits ', params: { name: 'Taxido' } }
+        before { post '/suits', params: { name: 'Taxido' } }
 
         it 'returns status code 422' do
           expect(response).to have_http_status(422)
@@ -87,7 +87,7 @@ RSpec.describe "Suits", type: :request do
         end
 
         it 'returns status code 204' do
-          expect(response.status).to have_http_status(204)
+          expect(response).to have_http_status(204)
         end
       end
     end
