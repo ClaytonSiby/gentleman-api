@@ -3,6 +3,7 @@ FactoryBot.define do
         name { 'Taxido' }
         suit_type { 'Slim Fit' }
         color { 'black' }
+        size { 'S' }
         price { 123.45 }
         description { Faker::Lorem.paragraph }
         imageUrl { 'https://service.unsplash.com/?suit,black' }
