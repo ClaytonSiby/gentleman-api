@@ -7,7 +7,7 @@ RSpec.describe AuthorizeApiRequest do
   let(:header) { { 'Authorization' => token_generator(user.id) } }
 
   # Invalid request subject
-  subject(:invalid_request_obj) { describe_class.new({})}
+  subject(:invalid_request_obj) { describe_class.new({}) }
   # valid request subject
   subject(:valid_request_obj) { described_class.new(header) }
 
@@ -25,11 +25,11 @@ RSpec.describe AuthorizeApiRequest do
 
     # returns an error message when invalid request
     context 'when invalid request' do
-        context 'when missing token' do
-          it 'raises a MissingToken error' do
-            expect { invalid_request_obj.call }.to raise_error(ExceptionHandler::MissingToken, 'Missing token')
-          end
+      context 'when missing token' do
+        it 'raises a MissingToken error' do
+          expect { invalid_request_obj.call }.to raise_error(ExceptionHandler::MissingToken, 'Missing token')
         end
+      end
     end
 
     context 'when invalid token' do
@@ -49,24 +49,24 @@ RSpec.describe AuthorizeApiRequest do
 
       it 'raises ExceptionHandler::ExpiredSignature error ' do
         expect { request_obj.call }
-        .to raise_error(
+          .to raise_error(
             ExceptionHandler::InvalidToken,
             /Signature has expired/
-        )
+          )
       end
     end
 
     context 'fake token' do
-        let(:header) { { 'Authorization' => 'foobar' } }
-        subject(:invalid_request_obj) { described_class.new(header) }
+      let(:header) { { 'Authorization' => 'foobar' } }
+      subject(:invalid_request_obj) { described_class.new(header) }
 
-        it 'handles JWT::DecodeError' do
-          expect { invalid_request_obj.call }
+      it 'handles JWT::DecodeError' do
+        expect { invalid_request_obj.call }
           .to raise_error(
-              ExceptionHandler::InvalidToken,
-              /Not enough or too many segments/
+            ExceptionHandler::InvalidToken,
+            /Not enough or too many segments/
           )
-        end
+      end
     end
   end
 end
