@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Suits", type: :request do
-  describe "GET /index" do
+RSpec.describe 'Suits', type: :request do
+  describe 'GET /index' do
     let!(:suits) { create_list(:suit, 10) }
     let(:suit_id) { suits.first.id }
 
@@ -19,7 +19,7 @@ RSpec.describe "Suits", type: :request do
     end
 
     describe 'GET /api/v1/suits/:id' do
-      before { get "/suits/#{suit_id}"}
+      before { get "/suits/#{suit_id}" }
 
       context 'when the record exists' do
         it 'returns the suit' do
@@ -46,14 +46,14 @@ RSpec.describe "Suits", type: :request do
     end
 
     describe 'POST /api/v1/suits' do
-      let(:valid_attributes) { { name: 'Taxido',
-                                 suit_type: 'Slim Fit',
-                                 color: 'black',
-                                 price: 123.45,
-                                 description: Faker::Lorem.paragraph,
-                                 imageUrl: 'https://service.unsplash.com/?suit,black'
-                                }}
-
+      let(:valid_attributes) do
+        { name: 'Taxido',
+          suit_type: 'Slim Fit',
+          color: 'black',
+          price: 123.45,
+          description: Faker::Lorem.paragraph,
+          imageUrl: 'https://service.unsplash.com/?suit,black' }
+      end
 
       context 'when the request is valid' do
         before { post '/suits', params: valid_attributes }

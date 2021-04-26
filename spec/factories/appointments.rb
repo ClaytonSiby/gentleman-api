@@ -1,4 +1,5 @@
 FactoryBot.define do
-    factory :appointment do
-    end
+  factory :appointment do
+    suit { '' }
+  end
 end
