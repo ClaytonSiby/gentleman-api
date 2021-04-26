@@ -2,11 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Suits', type: :request do
   describe 'GET /index' do
+    let(:user) { create(:user, { username: 'Clayton', email: 'clayton@example.com', password: 'password2021' }) }
     let!(:suits) { create_list(:suit, 10) }
     let(:suit_id) { suits.first.id }
 
     describe 'GET /api/v1/suits' do
-      before { get '/suits' }
+      before do
+        get "/users/#{user.id}/suits"
+      end
 
       it 'returns suits' do
         expect(json).not_to be_empty
