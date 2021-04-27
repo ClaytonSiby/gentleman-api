@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Suits', type: :request do
   describe 'GET /index' do
     let(:user) { create(:user) }
-    let!(:suits) { create_list(:suit, 10) }
+    let!(:suits) { create_list(:suit, 10, user_id: user.id) }
     let(:suit_id) { suits.first.id }
+    # authorize request
     let(:headers) { valid_headers }
 
     describe 'GET /api/v1/suits' do
@@ -49,17 +50,18 @@ RSpec.describe 'Suits', type: :request do
     end
 
     describe 'POST /api/v1/suits' do
-      let(:valid_attributes) do
+      let(:valid_attributes) {
         { name: 'Taxido',
           suit_type: 'Slim Fit',
           color: 'black',
-          price: 123.45,
-          description: Faker::Lorem.paragraph,
+          price: '123.45',
+          description: 'Black Taxido, slim fit',
           imageUrl: 'https://service.unsplash.com/?suit,black' }
-      end
+        }
+      
 
       context 'when the request is valid' do
-        before { post '/suits', params: valid_attributes, headers: headers }
+        before { post '/suits', params: valid_attributes.to_json, headers: headers }
 
         it 'creates a new suit' do
           expect(json['name']).to eq('Taxido')
@@ -71,7 +73,7 @@ RSpec.describe 'Suits', type: :request do
       end
 
       context 'when the request is invalid' do
-        before { post '/suits', params: { name: 'Taxido' } }
+        before { post '/suits', params: { name: 'Taxido' }.to_json, headers: headers }
 
         it 'returns status code 422' do
           expect(response).to have_http_status(422)
@@ -80,10 +82,10 @@ RSpec.describe 'Suits', type: :request do
     end
 
     describe 'PUT /api/v1/suits/:id' do
-      let(:valid_attributes) { { name: 'Peak Lapel' } }
+      let(:valid_attributes) { { name: "Lapel" } }
 
       context 'when the record exists' do
-        before { put "/suits/#{suit_id}", params: valid_attributes, headers: headers }
+        before { put "/suits/#{suit_id}", params: valid_attributes.to_json, headers: headers }
 
         it 'updates the record' do
           expect(response.body).to be_empty
