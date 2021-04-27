@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Suits', type: :request do
   describe 'GET /index' do
-    let(:user) { create(:user, { username: 'Clayton', email: 'clayton@example.com', password: 'password2021' }) }
+    let(:user) { create(:user) }
     let!(:suits) { create_list(:suit, 10) }
     let(:suit_id) { suits.first.id }
+    let(:headers) { valid_headers }
 
     describe 'GET /api/v1/suits' do
-      before do
-        get "/users/#{user.id}/suits"
-      end
+      before {  get "//suits", params: {}, headers: headers  }
+      
 
       it 'returns suits' do
         expect(json).not_to be_empty
@@ -22,7 +22,7 @@ RSpec.describe 'Suits', type: :request do
     end
 
     describe 'GET /api/v1/suits/:id' do
-      before { get "/suits/#{suit_id}" }
+      before { get "/suits/#{suit_id}", params: {}, headers: headers }
 
       context 'when the record exists' do
         it 'returns the suit' do
@@ -59,7 +59,7 @@ RSpec.describe 'Suits', type: :request do
       end
 
       context 'when the request is valid' do
-        before { post '/suits', params: valid_attributes }
+        before { post '/suits', params: valid_attributes, headers: headers }
 
         it 'creates a new suit' do
           expect(json['name']).to eq('Taxido')
@@ -83,7 +83,7 @@ RSpec.describe 'Suits', type: :request do
       let(:valid_attributes) { { name: 'Peak Lapel' } }
 
       context 'when the record exists' do
-        before { put "/suits/#{suit_id}", params: valid_attributes }
+        before { put "/suits/#{suit_id}", params: valid_attributes, headers: headers }
 
         it 'updates the record' do
           expect(response.body).to be_empty
@@ -96,7 +96,7 @@ RSpec.describe 'Suits', type: :request do
     end
 
     describe 'DLETE /api/v1/suits/:id' do
-      before { delete "/suits/#{suit_id}" }
+      before { delete "/suits/#{suit_id}", params: {}, headers: headers }
 
       it 'returns status code 204' do
         expect(response).to have_http_status(204)
