@@ -2,12 +2,12 @@ class SuitsController < ApplicationController
   before_action :set_suit, only: %i[show update destroy]
 
   def index
-    @suits = Suit.all
+    @suits = current_user.suits
     json_response(@suits)
   end
 
   def create
-    @suit = Suit.create!(suit_params)
+    @suit = current_user.suits.create!(suit_params)
     json_response(@suit)
   end
 
