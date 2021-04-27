@@ -1,5 +1,5 @@
 class Suit < ApplicationRecord
-  has_many :appointments
   belongs_to :user
+  has_many :appointments
   validates :name, :suit_type, :color, :price, :description, :imageUrl, presence: true
 end
