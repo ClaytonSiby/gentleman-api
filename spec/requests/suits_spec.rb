@@ -9,8 +9,7 @@ RSpec.describe 'Suits', type: :request do
     let(:headers) { valid_headers }
 
     describe 'GET /api/v1/suits' do
-      before {  get "//suits", params: {}, headers: headers  }
-      
+      before { get '//suits', params: {}, headers: headers }
 
       it 'returns suits' do
         expect(json).not_to be_empty
@@ -50,15 +49,14 @@ RSpec.describe 'Suits', type: :request do
     end
 
     describe 'POST /api/v1/suits' do
-      let(:valid_attributes) {
+      let(:valid_attributes) do
         { name: 'Taxido',
           suit_type: 'Slim Fit',
           color: 'black',
-          price: '123.45',
+          price: 123.45,
           description: 'Black Taxido, slim fit',
           imageUrl: 'https://service.unsplash.com/?suit,black' }
-        }
-      
+      end
 
       context 'when the request is valid' do
         before { post '/suits', params: valid_attributes.to_json, headers: headers }
@@ -82,7 +80,7 @@ RSpec.describe 'Suits', type: :request do
     end
 
     describe 'PUT /api/v1/suits/:id' do
-      let(:valid_attributes) { { name: "Lapel" } }
+      let(:valid_attributes) { { name: 'Lapel' } }
 
       context 'when the record exists' do
         before { put "/suits/#{suit_id}", params: valid_attributes.to_json, headers: headers }
