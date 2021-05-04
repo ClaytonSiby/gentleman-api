@@ -1,5 +1,7 @@
-### This API exposes the following endpoints:
+### Entity Relationship Diagram:
+![erd](/assets/entity_relationship_diagram.png)
 
+### This API exposes the following endpoints:
 
 | Endpoint                | Functionality                |
 |-------------------------|------------------------------|
