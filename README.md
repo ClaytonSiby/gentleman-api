@@ -16,7 +16,7 @@ The gentleman api is an RESTful API built with Rails and JWT. It exposes some us
 | DELETE /suits/:id       | Delete a suit                |
 | PUT /suits/:id          | Update a suit                |
 | POST /appointments      | Add an appointment           |
-| GET /appointments       | Get user appointments cars   |
+| GET /appointments       | Get user appointments        |
 
 
 ## Project SetUp
