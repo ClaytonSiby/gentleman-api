@@ -1,24 +1,14 @@
-# README
+### This API exposes the following endpoints:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+| Endpoint                | Functionality                |
+|-------------------------|------------------------------|
+| POST /signup            | Signup                       |
+| POST /auth/login        | Login                        |
+| GET /suits              | List all suits               |
+| POST /suits             | Create a new suit            |
+| GET /suits/:id          | View a single suit           |
+| DELETE /suits/:id       | Delete a suit                |
+| PUT /suits/:id          | Update a suit                |
+| POST /appointments      | Add an appointment           |
+| GET /appointments       | Get user appointments cars   |
