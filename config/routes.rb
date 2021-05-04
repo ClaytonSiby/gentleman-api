@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-    resources :suits
-    resources :appointments
+    # namespace the controllers without affecting the URI
+    scope module: :v1, contraints: ApiVersion.new('v1', true) do
+      resources :suits
+      resources :appointments
+    end
 
     post '/auth/login', to: 'authentication#authenticate'
     post '/signup', to: 'users#create'
