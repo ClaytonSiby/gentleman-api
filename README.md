@@ -17,3 +17,40 @@ The gentleman api is an RESTful API built with Rails and JWT. It exposes some us
 | PUT /suits/:id          | Update a suit                |
 | POST /appointments      | Add an appointment           |
 | GET /appointments       | Get user appointments cars   |
+
+
+## Project SetUp
+You can clone the project on your local machine by running:
+
+- `git clone https://github.com/ClaytonSiby/gentleman-api.git`
+then:
+-  `cd gentleman-api`
+
+### install all dependencies by running:
+- `bundle install`
+
+- you can run all tests for this project using `bin/bundle exec rspec` from the command line.
+
+## Author 
+
+👤 **Clayton Siby**
+
+- Github: [@ClaytonSiby](https://github.com/ClaytonSiby)
+   
+- Linkedin: [Linkedin Profile](https://www.linkedin.com/in/clayton-siby-48a8a0183/)
+
+- Twitter: [@Twitter](https://twitter.com/ClaytonSiby)
+
+## :handshake: Contributing 
+
+* Contributions, issues and feature requests are welcome! Feel free to check the [issues page](https://github.com/ClaytonSiby/MealsCatalogue-Application/issues)
+- To contribute to this project:
+- Fork this repository & clone locally.
+- Create an upstream remote and sync your local copy.
+- Create a new branch.
+- Push your code to your origin repository.
+- Create a new Pull Request .
+
+## Show your support
+
+Give a ⭐️ if you like this project!
