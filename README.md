@@ -6,6 +6,8 @@ The gentleman api is an RESTful API built with Rails and JWT. It exposes some us
 
 ### This API exposes the following endpoints:
 
+> Base URL https://the-gentleman-api.herokuapp.com/
+
 | Endpoint                | Functionality                |
 |-------------------------|------------------------------|
 | POST /signup            | Signup                       |
