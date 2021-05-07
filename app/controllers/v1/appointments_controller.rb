@@ -1,5 +1,10 @@
 module V1
   class AppointmentsController < ApplicationController
+    def index
+      @appointments = current_user.appointments
+      json_response(@appointments)
+    end
+
     def create
       appointment = current_user.appointments.create!(suit_id: params[:suit_id])
 
