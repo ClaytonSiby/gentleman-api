@@ -3,7 +3,7 @@ module V1
     before_action :set_suit, only: %i[show update destroy]
 
     def index
-      @suits = current_user.suits
+      @suits = Suit.all
       json_response(@suits)
     end
 
