@@ -43,7 +43,7 @@ module GentlemanApi
         resource(
           '*',
           headers: :any,
-          methods: %i[get patch put delete post options]
+          methods: [:get, :patch, :put, :delete, :post, :options]
         )
       end
     end
