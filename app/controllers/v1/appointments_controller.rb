@@ -1,8 +1,8 @@
 module V1
   class AppointmentsController < ApplicationController
     def index
-      @appointments = current_user.appointments
-      json_response(@appointments)
+      appointments = User.suit_appointments(current_user)
+      json_response(appointments)
     end
 
     def create
