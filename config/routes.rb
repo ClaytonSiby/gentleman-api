@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    root 'homepage#index'
+    root 'v1/suits#index'
     # namespace the controllers without affecting the URI
     scope module: :v1, contraints: ApiVersion.new('v1', true) do
       resources :suits
