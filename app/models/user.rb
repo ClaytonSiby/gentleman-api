@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates :username, :email, :password, presence: true
   validates :password, length: { minimum: 7 }
-  validates_format_of :email, with: URI::NailTo::EMAIL_REGEXP
+  validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
 
   def self.suit_appointments(user)
     appointments = []
