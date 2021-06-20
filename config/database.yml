@@ -23,16 +23,16 @@ default: &default
 
 development:
   <<: *default
-  database: gentleman_api_development
+  database: gentleman_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: gentleman_api
+  username: postgres
 
   # The password associated with the postgres role (username).
-  #password:
+  password: '@#psql.org#$%'
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -57,7 +57,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: gentleman_api_test
+  database: gentleman_test
+  username: postgres
+  password: '@#psql.org#$%'
+
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: gentleman_api_production
-  username: gentleman_api
-  password: <%= ENV['GENTLEMAN_API_DATABASE_PASSWORD'] %>
+  database: gentleman_production
+  username: postgres
+  password: <%= ENV['GENTLEMAN_DATABASE_PASSWORD'] %>
